@@ -1,5 +1,6 @@
 const Team = require("../lib/team");
 const Employee = require("../lib/employee");
+const utilFuncs = require("../lib/utilfuncs");
 
 describe("Team class", () => {
   describe("Initialization", () => {
@@ -13,7 +14,7 @@ describe("Team class", () => {
 
   describe("addMember", () => {
     it("should add a team member of type [Manager, Engineer, or Intern]", () => {
-      const team = new Team();
+      const team = new Team("team1");
       const employee = new Employee("John Doe", 102, "johndoe@email.com");
 
       team.addMember(employee);
@@ -21,6 +22,22 @@ describe("Team class", () => {
       expect(team.members.length).toEqual(1);
       expect(team.members[0]).toBeInstanceOf(Employee);
       expect(team.members[0]).toEqual(employee);
+    });
+  });
+
+  describe("questions", () => {
+    it("should return team questions", () => {
+      const team = new Team("team1");
+
+      expect(Team.questions).toEqual([
+        {
+          type: "input",
+          message: "What is the team name?",
+          validate: utilFuncs.validateStringContent,
+          filter: utilFuncs.stringTrim,
+          name: "teamName",
+        },
+      ]);
     });
   });
 });
