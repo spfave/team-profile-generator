@@ -2,6 +2,7 @@ const Team = require("../lib/team");
 const Employee = require("../lib/employee");
 const utilFuncs = require("../lib/utilfuncs");
 
+// Tests
 describe("Team class", () => {
   describe("Initialization", () => {
     it("should create an Team object ", () => {
@@ -27,8 +28,6 @@ describe("Team class", () => {
 
   describe("questions", () => {
     it("should return Team questions", () => {
-      const team = new Team("team1");
-
       expect(Team.questions).toEqual([
         {
           type: "input",

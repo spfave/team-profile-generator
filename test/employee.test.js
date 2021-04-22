@@ -1,6 +1,7 @@
 const Employee = require("../lib/employee");
 const utilFuncs = require("../lib/utilfuncs");
 
+// Tests
 describe("Employee class", () => {
   describe("Initialization", () => {
     it("should create an Employee object with 'name' string, 'id' number, and 'email' string", () => {
