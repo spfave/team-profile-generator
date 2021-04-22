@@ -1,23 +1,25 @@
 // Import Node.js packages
 const inquirer = require("inquirer");
 
-// Import library packages
-const TeamSite = require("../lib/teamsite");
+// Import library modules
+const TeamGenerator = require("../lib/teamgenerator");
 const Team = require("../lib/team");
+const Manager = require("../lib/manager");
 
 jest.mock("inquirer");
 
+// Tests
 describe("TeamSite class", () => {
   describe("Initialization", () => {
     it("should create an TeamSite object ", () => {
-      const teamSite = new TeamSite();
-      expect(teamSite).toBeInstanceOf(TeamSite);
+      const teamGen = new TeamGenerator();
+      expect(teamGen).toBeInstanceOf(TeamGenerator);
     });
   });
 
   describe("promptTeamName", () => {
     it("Should retrieve a team name from user input", async () => {
-      const teamSite = new TeamSite();
+      const teamGen = new TeamGenerator();
       const inputTeamName = "Cobras!";
 
       inquirer.prompt.mockReturnValue(
@@ -26,10 +28,42 @@ describe("TeamSite class", () => {
         })
       );
 
-      await teamSite.promptTeamName();
+      await teamGen.promptTeamName();
       expect(inquirer.prompt).lastCalledWith(Team.questions);
-      expect(teamSite.team).toBeInstanceOf(Team);
-      expect(teamSite.team.name).toEqual(inputTeamName);
+      expect(teamGen.team).toBeInstanceOf(Team);
+      expect(teamGen.team.name).toEqual(inputTeamName);
+    });
+  });
+
+  describe("promptTeamManager", () => {
+    it("Should retrieve manager input from user input", async () => {
+      const teamGen = new TeamGenerator();
+      teamGen.team = new Team("team1");
+
+      const inputManager = {
+        name: "John Doe",
+        id: 123,
+        email: "johndoe@email.com",
+        office: "201A",
+      };
+      const myManager = new Manager(
+        inputManager.name,
+        inputManager.id,
+        inputManager.email,
+        inputManager.office
+      );
+
+      inquirer.prompt.mockReturnValue(
+        new Promise((resolve) => {
+          resolve(inputManager);
+        })
+      );
+
+      await teamGen.promptTeamManager();
+      expect(inquirer.prompt).lastCalledWith(Manager.questions);
+      expect(teamGen.team.members.length).toEqual(1);
+      expect(teamGen.team.members[0]).toBeInstanceOf(Manager);
+      expect(teamGen.team.members[0]).toEqual(myManager);
     });
   });
 });
