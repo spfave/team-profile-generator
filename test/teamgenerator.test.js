@@ -59,7 +59,7 @@ describe("TeamSite class", () => {
         })
       );
 
-      await teamGen.promptTeamManager();
+      await teamGen.promptManager();
       expect(inquirer.prompt).lastCalledWith(Manager.questions);
       expect(teamGen.team.members.length).toEqual(1);
       expect(teamGen.team.members[0]).toBeInstanceOf(Manager);
