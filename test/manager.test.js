@@ -11,7 +11,7 @@ describe("Manager class", () => {
       expect(manager.name).toEqual("Jane Doe");
       expect(manager.id).toEqual(101);
       expect(manager.email).toEqual("janedoe@email.com");
-      expect(manager.officeNumber).toEqual("207A");
+      expect(manager.office).toEqual("207A");
     });
   });
 
