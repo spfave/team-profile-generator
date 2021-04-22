@@ -1,4 +1,5 @@
 const Employee = require("../lib/employee");
+const utilFuncs = require("../lib/utilfuncs");
 
 describe("Employee class", () => {
   describe("Initialization", () => {
@@ -41,6 +42,58 @@ describe("Employee class", () => {
       const employee = new Employee("John Doe", 101, "johndoe@email.com");
 
       expect(employee.getRole()).toEqual("Employee");
+    });
+  });
+
+  describe("questions", () => {
+    it("should return Employee questions", () => {
+      expect(Employee.questions()).toEqual([
+        {
+          type: "input",
+          message: `What is the employee's name?`,
+          validate: utilFuncs.validateStringContent,
+          filter: utilFuncs.stringTrim,
+          name: `name`,
+        },
+        {
+          type: "input",
+          message: `What is the employee's ID?`,
+          validate: utilFuncs.validateID,
+          filter: utilFuncs.stringTrim,
+          name: "id",
+        },
+        {
+          type: "input",
+          message: `What is the employee's email?`,
+          validate: utilFuncs.validateEmail,
+          filter: utilFuncs.stringTrim,
+          name: "email",
+        },
+      ]);
+
+      expect(Employee.questions("person")).toEqual([
+        {
+          type: "input",
+          message: `What is the person's name?`,
+          validate: utilFuncs.validateStringContent,
+          filter: utilFuncs.stringTrim,
+          name: `name`,
+        },
+        {
+          type: "input",
+          message: `What is the person's ID?`,
+          validate: utilFuncs.validateID,
+          filter: utilFuncs.stringTrim,
+          name: "id",
+        },
+        {
+          type: "input",
+          message: `What is the person's email?`,
+          validate: utilFuncs.validateEmail,
+          filter: utilFuncs.stringTrim,
+          name: "email",
+        },
+      ]);
     });
   });
 });

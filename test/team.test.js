@@ -26,7 +26,7 @@ describe("Team class", () => {
   });
 
   describe("questions", () => {
-    it("should return team questions", () => {
+    it("should return Team questions", () => {
       const team = new Team("team1");
 
       expect(Team.questions).toEqual([
