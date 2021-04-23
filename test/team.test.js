@@ -1,5 +1,5 @@
 const Team = require("../lib/team");
-const Employee = require("../lib/employee");
+const Engineer = require("../lib/engineer");
 const utilFuncs = require("../lib/utilfuncs");
 
 // Tests
@@ -16,13 +16,13 @@ describe("Team class", () => {
   describe("addMember", () => {
     it("should add a team member of type [Manager, Engineer, or Intern]", () => {
       const team = new Team("team1");
-      const employee = new Employee("John Doe", 102, "johndoe@email.com");
+      const engineer = new Engineer("John Doe", 102, "johndoe@email.com");
 
-      team.addMember(employee);
+      team.addMember(engineer);
 
       expect(team.members.length).toEqual(1);
-      expect(team.members[0]).toBeInstanceOf(Employee);
-      expect(team.members[0]).toEqual(employee);
+      expect(team.members[0]).toBeInstanceOf(Engineer);
+      expect(team.members[0]).toEqual(engineer);
     });
   });
 
