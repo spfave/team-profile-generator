@@ -1,5 +1,8 @@
-const TeamSite = require("./lib/teamsite");
+// Modules
+const TeamGenerator = require("./lib/teamgenerator");
 
-const teamSite = new TeamSite();
+// Setup
+const teamSite = new TeamGenerator();
 
+// Execution
 teamSite.collectTeamData();
