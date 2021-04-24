@@ -5,12 +5,13 @@ const utilFuncs = require("../lib/utilfuncs");
 describe("Engineer class", () => {
   describe("Initialization", () => {
     it("should create an Engineer object with 'name' string, 'id' number, 'email' string, and 'github' string", () => {
-      const engineer = new Engineer(
-        "Jane Doe",
-        101,
-        "janedoe@email.com",
-        "JDoeGH"
-      );
+      const myEngineer = {
+        name: "Jane Doe",
+        id: 101,
+        email: "janedoe@email.com",
+        github: "JDoeGH",
+      };
+      const engineer = new Engineer(myEngineer);
 
       expect(engineer).toBeInstanceOf(Engineer);
       expect(engineer.name).toEqual("Jane Doe");
@@ -22,12 +23,13 @@ describe("Engineer class", () => {
 
   describe("getGitHub", () => {
     it("should return the engineer Github username", () => {
-      const engineer = new Engineer(
-        "Jane Doe",
-        101,
-        "janedoe@email.com",
-        "JDoeGH"
-      );
+      const myEngineer = {
+        name: "Jane Doe",
+        id: 101,
+        email: "janedoe@email.com",
+        github: "JDoeGH",
+      };
+      const engineer = new Engineer(myEngineer);
 
       expect(engineer.getGitHub()).toEqual(engineer.github);
     });
@@ -35,12 +37,13 @@ describe("Engineer class", () => {
 
   describe("getRole", () => {
     it("should return the engineer role", () => {
-      const engineer = new Engineer(
-        "Jane Doe",
-        101,
-        "janedoe@email.com",
-        "JDoeGH"
-      );
+      const myEngineer = {
+        name: "Jane Doe",
+        id: 101,
+        email: "janedoe@email.com",
+        github: "JDoeGH",
+      };
+      const engineer = new Engineer(myEngineer);
 
       expect(engineer.getRole()).toEqual("Engineer");
     });

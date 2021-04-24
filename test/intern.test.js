@@ -5,12 +5,13 @@ const utilFuncs = require("../lib/utilfuncs");
 describe("Intern class", () => {
   describe("Initialization", () => {
     it("should create an Intern object with 'name' string, 'id' number, 'email' string, and 'school' string", () => {
-      const intern = new Intern(
-        "John Doe",
-        101,
-        "johndoe@email.com",
-        "Virginia Tech"
-      );
+      const myIntern = {
+        name: "John Doe",
+        id: 101,
+        email: "johndoe@email.com",
+        school: "Virginia Tech",
+      };
+      const intern = new Intern(myIntern);
 
       expect(intern).toBeInstanceOf(Intern);
       expect(intern.name).toEqual("John Doe");
@@ -22,12 +23,13 @@ describe("Intern class", () => {
 
   describe("getSchool", () => {
     it("should return the intern school name", () => {
-      const intern = new Intern(
-        "John Doe",
-        101,
-        "johndoe@email.com",
-        "Virginia Tech"
-      );
+      const myIntern = {
+        name: "John Doe",
+        id: 101,
+        email: "johndoe@email.com",
+        school: "Virginia Tech",
+      };
+      const intern = new Intern(myIntern);
 
       expect(intern.getSchool()).toEqual(intern.school);
     });
@@ -35,12 +37,13 @@ describe("Intern class", () => {
 
   describe("getRole", () => {
     it("should return the intern role", () => {
-      const intern = new Intern(
-        "John Doe",
-        101,
-        "johndoe@email.com",
-        "Virginia Tech"
-      );
+      const myIntern = {
+        name: "John Doe",
+        id: 101,
+        email: "johndoe@email.com",
+        school: "Virginia Tech",
+      };
+      const intern = new Intern(myIntern);
 
       expect(intern.getRole()).toEqual("Intern");
     });

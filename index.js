@@ -1,8 +1,9 @@
-// Modules
-const TeamGenerator = require("./lib/teamgenerator");
+// Import library modules
+const Team = require("./lib/team");
 
-// Setup
-const teamSite = new TeamGenerator();
-
-// Execution
-teamSite.collectTeamData();
+// Script Execution
+const team = new Team();
+team
+  .collectTeamData()
+  .then((team) => console.log(team))
+  .catch((err) => console.log(err));
