@@ -65,11 +65,7 @@ describe("Team class", () => {
         github: "janeDoe",
       };
 
-      inquirer.prompt.mockReturnValue(
-        new Promise((resolve) => {
-          resolve(inputEngineer);
-        })
-      );
+      inquirer.prompt.mockResolvedValue(inputEngineer);
 
       await team.promptTeamRole(Engineer);
       expect(inquirer.prompt).lastCalledWith(Engineer.questions);
@@ -95,21 +91,54 @@ describe("Team class", () => {
 
       inquirer.prompt.mockReturnValue(
         new Promise((resolve) => {
-          resolve({ response: "Finished adding team members" });
+          resolve({ response: "response" });
         })
       );
 
       await team.promptTeamMembers();
       expect(inquirer.prompt).lastCalledWith(addTeamMember);
+    });
 
-      // inquirer.prompt.mockReturnValue(
-      //   new Promise((resolve) => {
-      //     resolve({ response: "Engineer" });
-      //   })
-      // );
+    it("should console log 'Team members collected' if default selected", async () => {
+      const team = new Team();
+      const mock = jest.spyOn(console, "log");
+      mock.mockImplementation(() => {});
 
-      // await team.promptTeamMembers();
-      // expect(inquirer.prompt).lastCalledWith(Engineer.questions);
+      inquirer.prompt.mockReturnValue(
+        new Promise((resolve) => {
+          resolve({ response: "Finished adding team members" });
+        })
+      );
+
+      await team.promptTeamMembers();
+      expect(mock).toBeCalledWith("Team members collected");
+
+      mock.mockRestore();
+    });
+
+    it("should call promptTeamRole if Engineer or Intern selected", async () => {
+      const team = new Team();
+      const inputEngineer = {
+        name: "Jane Doe",
+        id: 101,
+        email: "janedoe@email.com",
+        github: "janeDoe",
+      };
+      const mockPromptTeamRole = jest
+        .spyOn(team, "promptTeamRole")
+        .mockImplementation(() => {
+          team.members.push(inputEngineer);
+        });
+
+      inquirer.prompt
+        .mockResolvedValueOnce({ response: "Engineer" })
+        .mockResolvedValueOnce({ response: "Finished adding team members" });
+
+      await team.promptTeamMembers();
+      expect(mockPromptTeamRole).toHaveBeenCalledTimes(1);
+      expect(mockPromptTeamRole).toHaveBeenCalledWith(Engineer);
+
+      mockPromptTeamRole.mockRestore();
     });
   });
 
