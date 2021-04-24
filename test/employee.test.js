@@ -5,7 +5,12 @@ const utilFuncs = require("../lib/utilfuncs");
 describe("Employee class", () => {
   describe("Initialization", () => {
     it("should create an Employee object with 'name' string, 'id' number, and 'email' string", () => {
-      const employee = new Employee("John Doe", 101, "johndoe@email.com");
+      const myEmployee = {
+        name: "John Doe",
+        id: 101,
+        email: "johndoe@email.com",
+      };
+      const employee = new Employee(myEmployee);
 
       expect(employee).toBeInstanceOf(Employee);
       expect(employee.name).toEqual("John Doe");
@@ -16,31 +21,51 @@ describe("Employee class", () => {
 
   describe("getName", () => {
     it("should return the employee name", () => {
-      const employee = new Employee("John Doe", 101, "johndoe@email.com");
+      const myEmployee = {
+        name: "John Doe",
+        id: 101,
+        email: "johndoe@email.com",
+      };
+      const employee = new Employee(myEmployee);
 
-      expect(employee.getName()).toEqual(employee.name);
+      expect(employee.getName()).toEqual(myEmployee.name);
     });
   });
 
   describe("getID", () => {
     it("should return the employee ID", () => {
-      const employee = new Employee("John Doe", 101, "johndoe@email.com");
+      const myEmployee = {
+        name: "John Doe",
+        id: 101,
+        email: "johndoe@email.com",
+      };
+      const employee = new Employee(myEmployee);
 
-      expect(employee.getID()).toEqual(employee.id);
+      expect(employee.getID()).toEqual(myEmployee.id);
     });
   });
 
   describe("getEmail", () => {
     it("should return the employee email", () => {
-      const employee = new Employee("John Doe", 101, "johndoe@email.com");
+      const myEmployee = {
+        name: "John Doe",
+        id: 101,
+        email: "johndoe@email.com",
+      };
+      const employee = new Employee(myEmployee);
 
-      expect(employee.getEmail()).toEqual(employee.email);
+      expect(employee.getEmail()).toEqual(myEmployee.email);
     });
   });
 
   describe("getRole", () => {
     it("should return the employee role", () => {
-      const employee = new Employee("John Doe", 101, "johndoe@email.com");
+      const myEmployee = {
+        name: "John Doe",
+        id: 101,
+        email: "johndoe@email.com",
+      };
+      const employee = new Employee(myEmployee);
 
       expect(employee.getRole()).toEqual("Employee");
     });
