@@ -5,7 +5,13 @@ const utilFuncs = require("../lib/utilfuncs");
 describe("Manager class", () => {
   describe("Initialization", () => {
     it("should create an Manager object with 'name' string, 'id' number, 'email' string, and 'officeNumber' string", () => {
-      const manager = new Manager("Jane Doe", 101, "janedoe@email.com", "207A");
+      const myManger = {
+        name: "Jane Doe",
+        id: 101,
+        email: "janedoe@email.com",
+        office: "207A",
+      };
+      const manager = new Manager(myManger);
 
       expect(manager).toBeInstanceOf(Manager);
       expect(manager.name).toEqual("Jane Doe");
@@ -17,7 +23,13 @@ describe("Manager class", () => {
 
   describe("getRole", () => {
     it("should return the manager role", () => {
-      const manager = new Manager("Jane Doe", 101, "janedoe@email.com", "207A");
+      const myManger = {
+        name: "Jane Doe",
+        id: 101,
+        email: "janedoe@email.com",
+        office: "207A",
+      };
+      const manager = new Manager(myManger);
 
       expect(manager.getRole()).toEqual("Manager");
     });
