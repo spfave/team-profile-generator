@@ -1,5 +1,6 @@
-const TeamSite = require("./lib/teamsite");
+// Import library modules
+const Team = require("./lib/team");
 
-const teamSite = new TeamSite();
-
-teamSite.collectTeamData();
+// Script Execution
+const team = new Team();
+team.collectTeamData();
