@@ -80,6 +80,39 @@ describe("Team class", () => {
     });
   });
 
+  describe("promptTeamMembers", () => {
+    it("should prompt for a team member to add", async () => {
+      const team = new Team();
+      const addTeamMember = [
+        {
+          type: "list",
+          message: "Select additional team member to add",
+          choices: ["Engineer", "Intern", "Finished adding team members"],
+          default: "Finished adding team members",
+          name: "response",
+        },
+      ];
+
+      inquirer.prompt.mockReturnValue(
+        new Promise((resolve) => {
+          resolve({ response: "Finished adding team members" });
+        })
+      );
+
+      await team.promptTeamMembers();
+      expect(inquirer.prompt).lastCalledWith(addTeamMember);
+
+      // inquirer.prompt.mockReturnValue(
+      //   new Promise((resolve) => {
+      //     resolve({ response: "Engineer" });
+      //   })
+      // );
+
+      // await team.promptTeamMembers();
+      // expect(inquirer.prompt).lastCalledWith(Engineer.questions);
+    });
+  });
+
   describe("questions", () => {
     it("should return Team questions", () => {
       expect(Team.questions).toEqual([
