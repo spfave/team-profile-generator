@@ -10,11 +10,24 @@ const utilFuncs = require("../lib/utilfuncs");
 // Tests
 describe("Team class", () => {
   describe("Initialization", () => {
-    it("should create an Team object ", () => {
+    it("should create a Team object with default prop values with no constructor inputs", () => {
       const team = new Team();
 
       expect(team).toBeInstanceOf(Team);
-      expect(team).toEqual({ name: "", members: [] });
+      expect(team.name).toEqual("");
+      expect(team.members).toEqual([]);
+    });
+
+    it("should create a Team object with submitted prop values with constructor inputs", () => {
+      const myTeam = {
+        name: "Team 1",
+        members: ["manager1", "engineer1", "intern1"],
+      };
+      const team = new Team(myTeam);
+
+      expect(team).toBeInstanceOf(Team);
+      expect(team.name).toEqual(myTeam.name);
+      expect(team.members).toEqual(myTeam.members);
     });
   });
 
@@ -139,6 +152,18 @@ describe("Team class", () => {
       expect(mockPromptTeamRole).toHaveBeenCalledWith(Engineer);
 
       mockPromptTeamRole.mockRestore();
+    });
+  });
+
+  describe("props", () => {
+    it("should return Team properties as object of team name and members", () => {
+      const myTeam = {
+        name: "Team 1",
+        members: ["manager1", "engineer1", "intern1"],
+      };
+      const team = new Team(myTeam);
+
+      expect(team.props).toEqual(myTeam);
     });
   });
 
