@@ -25,7 +25,7 @@ This application is created with JavaScript and can be run using the Node.js run
 ## **[Video Demonstration](https://youtu.be/CdaOxO9H6X4)**
 &nbsp;
 ## **Development/Application Screenshots**
-![Screen capture Team Profile Generator unit tests passsed](./assets/img/terminal-app-tests-pass.png)
+![Screen capture Team Profile Generator unit tests passed](./assets/img/terminal-app-tests-pass.png)
 ![Screen capture Team Profile Generator running in terminal](./assets/img/terminal-app-selection.png)
 ![Screen capture Team Profile Generator generated team site](./assets/img/terminal-app-input-complete.png)
 ![Screen capture Team Profile Generator generated team site](./assets/img/generated-teamsite.png)
